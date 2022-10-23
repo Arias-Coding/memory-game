@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 import card from "../services/card";
 
@@ -8,11 +8,9 @@ interface Props {
 }
 
 export default function Card({ card, selectCard }: Props): JSX.Element {
-  const [state, setState] = useState("opacity-0");
+  const targetCard = useRef<HTMLDivElement>(null);
   const action = () => {
-    selectCard(card, () => {
-      state == "opacity-0" ? setState("opacity-100") : setState("opacity-0");
-    });
+    selectCard(card, () => targetCard.current?.classList.toggle("opacity-0"));
   };
 
   return (
@@ -21,7 +19,8 @@ export default function Card({ card, selectCard }: Props): JSX.Element {
       onClick={action}
     >
       <div
-        className={`bg-zinc-800 px-10 py-20 border-solid border-2 border-white text-white rounded-xl transition transition-700 ${state}`}
+        ref={targetCard}
+        className={`bg-zinc-800 px-10 py-20 border-solid border-2 border-white text-white rounded-xl transition transition-700 opacity-0`}
       >
         {card.id}
       </div>

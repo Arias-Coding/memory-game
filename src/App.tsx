@@ -20,7 +20,7 @@ function App() {
       ) : (
         ""
       )}
-      <div className="bg-zinc-900 text-white min-h-screen flex items-center justify-center">
+      <div className="bg-zinc-900 text-white min-h-screen py-12 flex items-center justify-center">
         <CardsLayout Cards={cards} setCards={setCards} setScreen={setScreen} />
       </div>
     </div>
