@@ -1,17 +1,10 @@
 import { useState, useEffect } from "react";
 
-import card from "../services/Card";
+import card from "../services/card";
 
-export default function useGame() {
+export default function useStart() {
   const [cards, setCards] = useState<card[]>([]);
-  const [level, setLevel] = useState(0);
-
-  const Start = (level: number) => {
-    setLevel(0);
-    setTimeout(() => {
-      setLevel(level);
-    }, 400);
-  };
+  const [level, setLevel] = useState(3);
 
   useEffect(() => {
     setCards([]);
@@ -45,6 +38,13 @@ export default function useGame() {
 
     setCards(newNewCards);
   }, [level]);
+
+  const Start = (level: number) => {
+    setLevel(0);
+    setTimeout(() => {
+      setLevel(level);
+    }, 200);
+  };
 
   return { cards, Start, setCards };
 }

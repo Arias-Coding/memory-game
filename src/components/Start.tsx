@@ -1,10 +1,8 @@
 interface Props {
-  setStart: Function;
-  setScreen: Function;
+  Start: Function;
 }
 
-export default function Start({ setStart, setScreen }: Props) {
-  setStart(3);
+export default function Start({ Start }: Props) {
   setTimeout(() => {
     document.getElementById("screen")?.classList.remove("-translate-y-full");
   }, 600);
@@ -25,8 +23,7 @@ export default function Start({ setStart, setScreen }: Props) {
 
             const level = target.level.value;
 
-            setStart(Number(level));
-            setScreen(false);
+            Start(Number(level));
           }}
         >
           <label>
