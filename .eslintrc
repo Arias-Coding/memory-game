@@ -28,15 +28,14 @@
     "react/prop-types": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "singleQuote": false,
     "prettier/prettier": [
       "warn",
       {
        "tabWidth": 2,
         "semi": true,
         "printWidth": 80,
-        "trailingComma": "all",
-        "singleQuote": true,
+        // "trailingComma": "all",
+        "singleQuote": false,      
         "bracketSpacing": true,
         "arrowParens": "always",
         "endOfLine":"auto"
