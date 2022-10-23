@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import card from "../services/Card";
+import card from "../services/card";
 
 interface Props {
   card: card;
