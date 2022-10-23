@@ -1,5 +1,5 @@
 import card from "../services/card";
-import useSelect from "../hooks/selectCard";
+import useSelect from "../hooks/useSelect";
 
 import Card from "./Card";
 
