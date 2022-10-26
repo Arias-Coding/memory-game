@@ -1,22 +1,39 @@
+import { useEffect, useState } from "react";
+
 import card from "../services/card";
 import useSelect from "../hooks/useSelect";
 
 import Card from "./Card";
 
 interface Props {
-  Cards: card[];
+  cards: card[];
   setCards: Function;
   setScreen: Function;
 }
 
-export default function CardsLayout({ Cards, setCards, setScreen }: Props) {
-  const { selectCard } = useSelect(Cards, setCards, setScreen);
+export default function CardsLayout({ cards, setCards, setScreen }: Props) {
+  const { selectCard } = useSelect(cards, setCards, setScreen);
+  const [rows, setRows] = useState("grid-rows-2");
+
+  useEffect(() => {
+    if (cards.length === 6) {
+      setRows("grid-rows-3 sm:grid-rows-2");
+    }
+    if (cards.length === 12) {
+      setRows("grid-rows-6 sm:grid-rows-4 lg:grid-rows-3");
+    }
+    if (cards.length === 18) {
+      setRows("auto-rows-min sm:grid-rows-6 lg:grid-rows-3");
+    }
+  }, [cards]);
 
   return (
-    <div className="text-black flex gap-8 w-9/12 flex-wrap justify-center">
-      {Cards.map((card, index) => (
-        <Card key={index} card={card} selectCard={selectCard} />
-      ))}
+    <div className="min-h-screen py-12 flex items-center justify-center overflow-hidden">
+      <div className={`gap-8 grid grid-flow-col ${rows}`}>
+        {cards.map((card, index) => (
+          <Card key={index} card={card} selectCard={selectCard} />
+        ))}
+      </div>
     </div>
   );
 }

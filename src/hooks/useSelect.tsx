@@ -41,7 +41,7 @@ export default function useSelect(
         setclassList({ action: () => {} });
 
         if (cards.every((e) => e.status === true) === true) {
-          setScreen(true);
+          setScreen("");
         }
 
         return;
