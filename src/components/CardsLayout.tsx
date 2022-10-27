@@ -23,13 +23,14 @@ export default function CardsLayout({ cards, setCards, setScreen }: Props) {
       setRows("grid-rows-6 sm:grid-rows-4 lg:grid-rows-3");
     }
     if (cards.length === 18) {
-      setRows("auto-rows-min sm:grid-rows-6 lg:grid-rows-3");
+      setRows("flex flex-wrap justify-center sm:grid-rows-6 lg:grid-rows-3");
+      // setRows("auto-rows-auto");
     }
   }, [cards]);
 
   return (
     <div className="min-h-screen py-12 flex items-center justify-center overflow-hidden">
-      <div className={`gap-8 grid grid-flow-col ${rows}`}>
+      <div className={`gap-8 sm:grid sm:grid-flow-col ${rows}`}>
         {cards.map((card, index) => (
           <Card key={index} card={card} selectCard={selectCard} />
         ))}
