@@ -13,24 +13,23 @@ interface Props {
 
 export default function CardsLayout({ cards, setCards, setScreen }: Props) {
   const { selectCard } = useSelect(cards, setCards, setScreen);
-  const [rows, setRows] = useState("grid-rows-2");
+  const [cols, setCols] = useState("");
 
   useEffect(() => {
     if (cards.length === 6) {
-      setRows("grid-rows-3 sm:grid-rows-2");
+      setCols("grid-cols-2 sm:grid-cols-3");
     }
     if (cards.length === 12) {
-      setRows("grid-rows-6 sm:grid-rows-4 lg:grid-rows-3");
+      setCols("grid-cols-2 sm:grid-cols-3 md:grid-cols-4");
     }
     if (cards.length === 18) {
-      setRows("flex flex-wrap justify-center sm:grid-rows-6 lg:grid-rows-3");
-      // setRows("auto-rows-auto");
+      setCols("grid-cols-2 sm:grid-cols-3 lg:grid-cols-6");
     }
   }, [cards]);
 
   return (
     <div className="min-h-screen py-12 flex items-center justify-center overflow-hidden">
-      <div className={`gap-8 sm:grid sm:grid-flow-col ${rows}`}>
+      <div className={`gap-8 grid place-content-center ${cols}`}>
         {cards.map((card, index) => (
           <Card key={index} card={card} selectCard={selectCard} />
         ))}
