@@ -2,25 +2,20 @@ import { useState } from "react";
 
 import card from "../services/card";
 
-interface beforeClassList {
-  action: Function | null;
-}
-
 export default function useSelect(
   cards: card[],
   setCards: Function,
   setScreen: Function
 ) {
   const [id, setId] = useState<number>(-1);
-  const [beforeClassList, setclassList] = useState<beforeClassList>({
-    action: null,
+  const [beforeClassList, setclassList] = useState<{ action: Function }>({
+    action: () => {
+      return;
+    },
   });
 
   const selectCard = (card: card, setOpacity: Function) => {
-    console.log("Funciona");
     if (card.status === true) {
-      console.log("Funciona x 2");
-
       return;
     }
 
@@ -40,13 +35,13 @@ export default function useSelect(
           1,
           { ...card, status: true }
         );
-
-        setId(-1);
-        setclassList({ action: null });
         setCards(newCards);
 
+        setId(-1);
+        setclassList({ action: () => {} });
+
         if (cards.every((e) => e.status === true) === true) {
-          setScreen(true);
+          setScreen("");
         }
 
         return;
@@ -55,11 +50,10 @@ export default function useSelect(
       if (card.id !== id) {
         setTimeout(() => {
           setOpacity();
-          beforeClassList.action?.();
+          beforeClassList.action();
         }, 600);
-
         setId(-1);
-        setclassList({ action: null });
+        setclassList({ action: () => {} });
 
         return;
       }
