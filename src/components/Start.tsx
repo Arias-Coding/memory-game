@@ -6,7 +6,7 @@ interface Props {
 export default function Start({ Start, position }: Props) {
   return (
     <div
-      className={`w-full h-screen absolute top-0 left-0 bg-zinc-800/70 z-20 flex justify-center items-center transition transition-200 ${position}`}
+      className={`w-full h-screen fixed top-0 left-0 bg-zinc-800/70 z-20 flex justify-center items-center transition transition-200 ${position}`}
     >
       <form
         className="flex justify-center flex-col w-34 gap-8"

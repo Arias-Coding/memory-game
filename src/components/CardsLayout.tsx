@@ -31,7 +31,7 @@ export default function CardsLayout({ cards, setCards, setScreen }: Props) {
     <div className="min-h-screen py-12 flex items-center justify-center overflow-hidden">
       <div className={`gap-8 grid place-content-center ${cols}`}>
         {cards.map((card, index) => (
-          <Card key={index} card={card} selectCard={selectCard} />
+          <Card key={index} card={card} index={index} selectCard={selectCard} />
         ))}
       </div>
     </div>
